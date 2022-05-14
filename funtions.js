@@ -1,10 +1,23 @@
-function myFunction() {
-  console.log("Hello World");
-}
+const funArg = function (myResolve, myReject) {
+  // "Producing Code" (May take some time)
 
-const myArrowFunction = (msg) => {
-  console.log(msg);
+  myResolve(); // when successful
+  myReject(); // when error
 };
 
-// myFunction();
-myArrowFunction("Arrow function");
+let myPromise = new Promise(funArg);
+
+// using promise
+// "Consuming Code" (Must wait for a fulfilled Promise)
+myPromise.then(
+  function (value) {
+    /* code if successful */
+  },
+  function (error) {
+    /* code if some error */
+  }
+);
+
+function main () {
+    await myPromise();
+}
