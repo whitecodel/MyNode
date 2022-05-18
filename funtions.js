@@ -1,23 +1,36 @@
 const funArg = function (myResolve, myReject) {
-  // "Producing Code" (May take some time)
-
-  myResolve(); // when successful
-  myReject(); // when error
+  myReject("Promise Rejected"); // when error
+  myResolve("Hello World"); // when successful
 };
 
-let myPromise = new Promise(funArg);
+// let myPromise = new Promise(funArg);
+
+const myPromiseFunction = () => {
+  return new Promise(funArg);
+};
 
 // using promise
 // "Consuming Code" (Must wait for a fulfilled Promise)
-myPromise.then(
-  function (value) {
-    /* code if successful */
-  },
-  function (error) {
-    /* code if some error */
-  }
-);
+// myPromise.then(
+//   function (value) {
+//     console.log("Success", value);
+//   },
+//   function (error) {
+//     console.log("Error", error);
+//   }
+// );
 
-function main () {
-    await myPromise();
+// const main = async () => {
+
+// }
+
+async function main() {
+  try {
+    var res = await myPromiseFunction();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+main();
