@@ -1,8 +1,8 @@
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const express = require("express");
+const app = express();
 
-for (let index = 0; index < array.length; index++) {
-  const element = array[index];
-  console.log(element);
-}
+app.use("/", function (req, res) {
+  res.send("Hello World");
+});
 
-console.log(index);
+app.listen(3000);
