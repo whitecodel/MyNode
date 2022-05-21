@@ -1,16 +1,14 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const { PORT } = process.env;
 
-console.log(process.env.PORT || 4000);
+app.use(express.json());
 
-// app.use(express.json());
+app.use("/:id", (req, res) => {
+  res.send(req.params);
+});
 
-// app.get("/", (req, res) => {
-//   console.log(req.body);
-//   res.send("Hello World");
-// });
+const listenResult = () => console.log("Example app listening on port 3000!");
 
-// const listenResult = () => console.log("Example app listening on port 3000!");
-
-// app.listen(3000, listenResult);
+app.listen(PORT || 3000, listenResult);
