@@ -1,11 +1,11 @@
-const routes = (app) => {
-  app.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
+const student = require("./routes/student");
+const employee = require("./routes/employee");
 
-  app.get("/about", (req, res) => {
-    res.send("About page");
-  });
+const routes = (app) => {
+  app.use("/api/v1/student", student);
+  app.use("/api/v1/employee", employee);
+
+  // app.use(router);
 };
 
 module.exports = routes;
